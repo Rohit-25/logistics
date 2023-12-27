@@ -10,18 +10,19 @@ const userRoutes = require('./routes/api.user/user.route')
 const roleRoutes = require('./routes/api.roles/roles.route')
 const permissionRoutes = require('./routes/api.permission/permission.route')
 const menuRoutes = require("./routes/api.menu/menu.route")
+const funct = require("./middleware/auth");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan('dev'));
 
-
+console.log(1);
 
 app.get('/', async (req, res, next) => {
   res.send({ message: 'Awesome it works 🐻' });
 });
 app.use('/api',authRoutes)
-app.use('/api',userRoutes);
+app.use('/api',funct('admin'),userRoutes);
 app.use('/api', roleRoutes);
 app.use('/api',permissionRoutes)
 app.use('/api',menuRoutes)

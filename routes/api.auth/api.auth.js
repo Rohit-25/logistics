@@ -41,16 +41,6 @@ router.post('/login',async(req,res,next)=>{
        Role : true
     }
    })
-
-    // const user = await prisma.users.findUnique({
-    //   where : {
-    //     id : Number(id) 
-    //   },
-    //   include : {
-    //     Role : true
-    //   }
-    // },)
-
    if(!user){
     return res.status(401).json({message : 'authentication failed'})
    }
@@ -67,5 +57,7 @@ router.post('/login',async(req,res,next)=>{
    next(error)
   }
 })
+
+
 
 module.exports = router;

@@ -91,10 +91,10 @@ router.patch('/user/:id', async (req, res, next) => {
   if(feild && value){
     updatebody[feild]=value;
    }
-    // else {
-    //   return res.status(400).json({ error: 'Invalid request' });
-    // }
-    console.log(updatebody,feild,value)
+    else {
+      return res.status(400).json({ error: 'Invalid request' });
+    }
+    // console.log(updatebody,feild,value)
    
    const user = await prisma.users.update({
     where:{
